@@ -1,0 +1,32 @@
+name: Python Application
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow on pushes to the main branch
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Optionally run tests or start the application here
+      - name: Run Streamlit app (for testing)
+        run: |
+          streamlit run app.py  # Replace app.py with the main file of your application
