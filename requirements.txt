@@ -1,0 +1,4 @@
+# For authentication handling
+authlib==1.2.1
+# For file upload handling
+watchdog==3.1.0
